@@ -1,0 +1,131 @@
+DelVar EClrDraw
+AxesOff:FnOff 
+BackgroundOff 
+0->Xmin:1->DeltaX
+0->Ymin:1->DeltaY
+22->Xscl:20->Yscl
+GridLine Gray
+Horizontal 164,Gray
+Horizontal 162,Gray
+SetUpEditor |LthetaWD
+SetUpEditor :7->dim(|LthetaWD
+"DEFGHIJKLMNOPQRSTUVWXYZ->Str2
+Lbl 0
+For(G,1,6
+	If not(E
+	Then:TextColor(Navy
+		Text(~1,7,~15+22G,sub("WORDLE",G,1
+		Text(~1,7,117+22G,sub(" STATS",G,1
+		Text(~1,7+20G,139,G
+		TextColor(Black
+	End
+	|LthetaWD(G:prgmthetaWDD
+End
+If not(E:Goto 8
+Lbl 9:7->G:"theta"+Str0->Str0
+TextColor(Navy
+Text(~1,147,7,"=
+Text(~1,147,139,">
+TextColor(Black
+|LthetaWD(7:prgmthetaWDD
+DelVar GRepeat G=6 or min(L1
+	1->L:G+1->G:"theta->Str1
+	Repeat Ans
+		TextColor(Black
+		Text(~1,7+20G,7,">
+		Repeat L=6 and max(K=21{1,5
+			getKey->K
+			Ans-5int(.1Ans+4
+			If L<=5 and Ans>0 and Ans<=28 and min(Ans!={4,5:Then
+				sub("ABC  "+Str2,Ans,1
+				Text(~1,7+20G,7+22L,Ans
+				Str1+Ans->Str1
+				L+1->L
+			End
+			If K=23:Then
+				max(L-1,1->L
+				sub(Str1,1,Ans->Str1
+				Text(~1,7+20G,7+22L," 
+			End
+			If K=45:Goto 1
+		End
+		sum(seq(27^(F-3)inString("ABC"+Str2,sub(Str1,F,1)),F,3,6->F
+		expr("|LthetaWD"+sub(Str1,2,1
+		max(F=remainder(int(Ans),|E6) or F=int(|E6fPart(Ans
+		If not(Ans:Then
+			TextColor(Red
+			Text(~1,7+20G,7,"!
+			Wait .3
+		End
+	End
+	6->dim(L1:"theta->Str3
+	For(L,2,6
+		sub(Str0,L,1)=sub(Str1,L,1->L1(L
+		If not(Ans:Str3+sub(Str0,L,1->Str3
+	End:Str3+"theta->Str3
+	For(L,2,6
+		TextColor(Green
+		If not(L1(L:Then
+			inString(Str3,sub(Str1,L,1
+			TextColor(Gray-8(Ans>0
+			If Ans
+			sub(Str3,1,Ans-1)+sub(Str3,Ans+1,length(Str3)-Ans->Str3
+		End
+		Text(~1,7+20G,~15+22L,sub(Str1,L,1
+		Wait .3
+	End
+	TextColor(Black
+	Text(~1,7+20G,7,".
+End
+If min(L1:Then
+	TextColor(Green
+	1+|LthetaWD(G->|LthetaWD(G
+	prgmthetaWDD
+Else
+	TextColor(Red
+End
+For(L,2,6
+	Text(~1,147,~15+22L,sub(Str0,L,1
+	Text(~1,147,117+22L," 
+	Wait .3(G=7
+End:E+1->E:7->G
+min(L1)(1+|LthetaWD(Ans:prgmthetaWDD
+Lbl 8:"theta->Str0:|LthetaWDtheta
+1+sum(cumSum(Ans)<randsum(Ans->G
+randInt(1,|LthetaWDtheta(Ans->F
+expr("|LthetaWD"+sub("ABC"+Str2,G,1->L1:0->L
+While Ans<F
+	IS>(L,0:
+	Ans+(L1(L)>=|E6)+10fPart(|E6L1(L
+End
+If Ans>F or |E6>L1(L:Then
+	int(|E6fPart(L1(L
+Else
+	~|E6+int(L1(L
+End:27Ans+G->F
+For(L,4,0,~1
+	int(Ans/27^L->G:sub("ABC"+Str2,Ans,1)+Str0->Str0
+	F-G27^L->F
+End
+If not(E:Goto 9
+Wait 1
+For(L,1,5
+	For(G,0,5
+		TextColor(Black+2(G>=3)+(G=4
+		Text(~1,27+20G,7+22L,sub("PLAY AGAIN     YES  NO        ",5G+L,1
+End:End
+TextColor(Black
+Repeat max(K=21{1,5
+	getKey->K
+	4+(Ans=34 or G=5 and Ans!=25->G
+	Text(~1,7+20Ans,117,"<
+	Text(~1,187-20Ans,117," 
+End
+If Ans=5:Goto 1
+For(G,1,7
+	For(L,0,5
+		Text(~1,7+20G,7+22L," 
+End:End
+Goto 0
+Lbl 1
+ClrDraw:ClrList L1
