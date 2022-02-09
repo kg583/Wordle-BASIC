@@ -14,4 +14,4 @@ A *green* letter is in the correct position, an *orange* letter is correct but n
 Orange letters respect the frequency of a letter in the secret word. That is, if there are two or more of the same letter in a guess, the later instances will be colored *only* if that many letters also appear in the secret word. For example, if the secret word is SCANT and you guess FUNNY, the first N will be grey and the second will be green.
 
 ## Stats
-The game tracks how many guesses you take to guess the secret word, as well as your current win streak. To reset your stats, run `ClrList thetaWD`.
+The game tracks how many guesses you take to guess the secret word, as well as your current win streak. To reset your stats, run `ClrList |LthetaWD`.
