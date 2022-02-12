@@ -89,7 +89,7 @@ For(L,2,6
 	Text(~1,147,117+22L," 
 	Wait .3(G=7
 End:E+1->E:7->G
-min(L1)(1+|LthetaWD(Ans:prgmthetaWDD
+min(L1)(1+|LthetaWD(Ans->|LthetaWD(Ans:prgmthetaWDD
 Lbl 8:"theta->Str0:|LthetaWDtheta
 1+sum(cumSum(Ans)<randsum(Ans->G
 randInt(1,|LthetaWDtheta(Ans->F
